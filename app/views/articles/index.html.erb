@@ -1,6 +1,6 @@
 <div>
   <h1>Articles</h1>
-  <a href="/articles/new">Create</a>
+  <%= link_to "Create", new_article_path %>
 </div>
 <hr>
 <table>
@@ -16,7 +16,13 @@
     <tr>
       <td><%=article.title %></td>
       <td><%=article.description %></td>
-      <td>Actions</td>
+      <td>
+        <div>
+          <%= link_to 'Show', article_path(article) %> |
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+      </td>
     </tr>
   <% end %>
   </tbody>
