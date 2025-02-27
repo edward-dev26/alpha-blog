@@ -1,8 +1,4 @@
-<div>
+<div class="container my-3 d-flex flex-column align-items-center">
   <h1>Update Article</h1>
-  <%= link_to 'Back to Articles list', articles_path %> |
-  <%= link_to "Back to Article", article_path(@article) %>
+  <%= render 'form' %>
 </div>
-<hr>
-
-<%= render 'form' %>
