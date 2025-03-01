@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(get_article_data)
+    @article.user = User.first
 
     if @article.save
       handle_save_success("Article was created successfully!")
