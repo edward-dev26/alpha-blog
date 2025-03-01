@@ -11,8 +11,14 @@
     <div class="card-body">
       <p class="card-text"><%= @article.description %></p>
     </div>
-    <div class="card-footer text-body-secondary">
-      Created <%= time_ago_in_words @article.created_at %> ago, updated <%= time_ago_in_words @article.updated_at %> ago
+    <div class="card-footer text-body-secondary d-flex justify-content-between">
+      <div>
+        By <%= @article.user.username %>
+      </div>
+      <div>
+        Created <%= time_ago_in_words @article.created_at %> ago, updated <%= time_ago_in_words @article.updated_at %>
+        ago
+      </div>
     </div>
   </div>
 </div>
