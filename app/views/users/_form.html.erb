@@ -1,0 +1,21 @@
+<div class='articles__form'>
+  <%= render "shared/errors", model: @user %>
+
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :username, class: 'form-label' %>
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.text_field :email, class: 'form-control', type: 'email' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :password, class: 'form-label' %>
+      <%= f.text_field :password, class: 'form-control', type: 'password' %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit class: 'btn btn-outline-primary' %>
+    </div>
+  <% end %>
+</div>

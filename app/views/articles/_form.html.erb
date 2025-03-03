@@ -1,14 +1,5 @@
 <div class='articles__form'>
-  <% if @article.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <h4>Validation failed</h4>
-      <ul>
-        <% @article.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", model: @article %>
 
   <%= form_with model: @article, local: true do |f| %>
     <div class="mb-3">
