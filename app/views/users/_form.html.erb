@@ -15,7 +15,7 @@
       <%= f.text_field :password, class: 'form-control', type: 'password' %>
     </div>
     <div class="mb-3">
-      <%= f.submit class: 'btn btn-outline-primary' %>
+      <%= f.submit @user.new_record? ? "Sign Up" : "Update", class: 'btn btn-outline-primary' %>
     </div>
   <% end %>
 </div>
