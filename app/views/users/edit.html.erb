@@ -1,6 +1,9 @@
-<div class="container d-flex justify-content-center align-items-center flex-grow-1">
+<div class="container my-3 d-flex flex-column align-items-center flex-grow-1">
+  <div class="align-self-end mb-2">
+    <%= link_to 'Profile', user_path(@user), class: 'btn btn-outline-primary' %>
+  </div>
   <div class="users-form">
-    <h1>Edit your profile</h1>
+    <h1>Edit profile</h1>
     <%= render "users/form" %>
   </div>
 </div>

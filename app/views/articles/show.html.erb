@@ -11,9 +11,10 @@
     <div class="card-body">
       <p class="card-text"><%= @article.description %></p>
     </div>
-    <div class="card-footer text-body-secondary d-flex justify-content-between">
-      <div>
+    <div class="card-footer text-body-secondary d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
         By <%= @article.user.username %>
+        <%= link_to avatar_for(@article.user, { size: 60 }), user_path(@article.user), class: "rounded-circle overflow-hidden" %>
       </div>
       <div>
         Created <%= time_ago_in_words @article.created_at %> ago, updated <%= time_ago_in_words @article.updated_at %>

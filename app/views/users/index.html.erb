@@ -1,0 +1,29 @@
+<div class="container my-3">
+  <h1 class="mb-3 text-center">Users</h1>
+  <div>
+    <% @users.each do |user| %>
+      <div class="card text-center mt-3">
+        <div class="card-header d-flex justify-content-end">
+          <div>
+            <%= link_to 'Profile', user_path(user), class: 'btn btn-outline-primary' %>
+            <%= link_to 'Edit profile', edit_user_path(user), class: 'btn btn-outline-success' %>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= user.username %></h5>
+          <p class="card-text"><%= user.email %></p>
+          <%= avatar_for user %>
+        </div>
+        <div class="card-footer text-body-secondary d-flex justify-content-between">
+          <div>
+            <%= pluralize(user.articles.count, "Articles") %>
+          </div>
+          <div>
+            Created <%= time_ago_in_words user.created_at %> ago, updated <%= time_ago_in_words user.updated_at %>
+            ago
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
