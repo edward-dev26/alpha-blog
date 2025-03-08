@@ -1,7 +1,7 @@
 <% if flash.any? %>
   <div class="container">
     <% flash.each do |name, msg| %>
-      <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+      <div class="alert alert-dismissible fade show my-3 <%= name == 'alert' ? 'alert-danger' : 'alert-success' %>" role="alert">
         <div>
           <%= msg %>
         </div>

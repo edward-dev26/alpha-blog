@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Hi, #{@user.username}. Welcome to Ruby Blog!"
-
+      session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       render 'new'

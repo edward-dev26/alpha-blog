@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-center align-items-center flex-grow-1">
+  <div class="users-form">
+    <h1>Login</h1>
+    <div>
+      <%= form_with scope: :auth, url: login_path, local: true do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, class: 'form-label' %>
+          <%= f.text_field :email, class: 'form-control', type: 'email' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, class: 'form-label' %>
+          <%= f.text_field :password, class: 'form-control', type: 'password' %>
+        </div>
+        <div class="mb-3">
+          <%= f.submit "Login", class: 'btn btn-outline-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
