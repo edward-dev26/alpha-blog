@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
+  before_action :require_is_not_auth, only: [:create]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_owner, only: [:edit, :update]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
@@ -7,10 +10,6 @@ class UsersController < ApplicationController
 
   def show
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
-  end
-
-  def new
-    @user = User.new
   end
 
   def create
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render 'new'
+      render 'signup'
     end
   end
 
@@ -46,5 +45,12 @@ class UsersController < ApplicationController
 
   def get_user_data
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def require_owner
+    if @user != current_user
+      flash[:alert] = 'You can edit or delete only own profile'
+      redirect_to user_path(@user)
+    end
   end
 end

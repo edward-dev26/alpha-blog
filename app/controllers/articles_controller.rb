@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_owner, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -52,5 +54,12 @@ class ArticlesController < ApplicationController
   def handle_save_success(message)
     flash[:notice] = message
     redirect_to @article
+  end
+
+  def require_owner
+    if current_user != @article.user
+      flash[:alert] = "You can only edit or delete your own articles"
+      redirect_to article_path(@article)
+    end
   end
 end

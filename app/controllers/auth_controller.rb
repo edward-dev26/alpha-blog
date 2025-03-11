@@ -1,4 +1,10 @@
 class AuthController < ApplicationController
+  before_action :require_is_not_auth, only: [:signup, :login, :signin]
+
+  def signup
+    @user = User.new
+  end
+
   def login
   end
 
